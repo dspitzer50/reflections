@@ -1,0 +1,156 @@
+
+============================================================================================
+============================================================================================
+
+Sun. 26-Feb-2017
+============================================================================================
+-- And again...
+
+dwight blender-git $ ./blender/build_files/build_environment/install_deps.sh
+WARNING! ****WARNING****
+If you are experiencing issues building Blender, _*TRY A FRESH, CLEAN BUILD FIRST*_!
+The same goes for install_deps itself, if you encounter issues, please first erase everything in /home/dwight/src/blender-deps and /opt/lib
+(provided obviously you did not add anything yourself in those dirs!), and run install_deps.sh again!
+Often, changes in the libs built by this script, or in your distro package, cannot be handled simply, so...
+
+You may also try to use the '--build-foo' options to bypass your distribution's packages
+for some troublesome/buggy libraries...
+
+
+
+
+
+
+
+
+
+Sun. 26-Feb-2017
+============================================================================================
+-- Trying again, moving down 1 dir, out of ~/dev.
+
+/dev/sda2       253060780   50077704  190105252  21% /
+/dev/sda2       253060780   50618248  189564708  22% /
+/dev/sda2       253060780   50618248  189564708  22% /
+/dev/sda2       253060780   50758464  189424492  22% /
+
+
+
+dwight blender-git $ pwd
+/home/dwight/blender-git
+
+dwight blender-git $ ll
+total 16
+drwxrwxr-x  2 dwight dwight  4096 Feb 26 09:49 ./
+drwxr-xr-x 59 dwight dwight 12288 Feb 26 09:35 ../
+
+dwight blender-git $ df
+Filesystem      1K-blocks       Used  Available Use% Mounted on
+udev              4033900          0    4033900   0% /dev
+tmpfs              817496       9948     807548   2% /run
+/dev/sda2       253060780   50077704  190105252  21% /
+tmpfs             4087468       6300    4081168   1% /dev/shm
+tmpfs                5120          4       5116   1% /run/lock
+tmpfs             4087468          0    4087468   0% /sys/fs/cgroup
+/dev/sdh1       488384000  481309844    7074156  99% /media/dwight/E: FreeAgent (.5 T)
+/dev/sda4      2664647676  253144032 2411503644  10% /media/dwight/DataStor
+/dev/sdc1      1953447932 1827903244  125544688  94% /media/dwight/L: MyPassPort (2T)
+/dev/sdb1      1953511420 1453138924  500372496  75% /media/dwight/O: Backup+ (2T)
+cgmfs                 100          0        100   0% /run/cgmanager/fs
+tmpfs              817496        100     817396   1% /run/user/1000
+
+dwight blender-git $ 
+
+
+-- from https://wiki.blender.org/index.php/Dev:Doc/Building_Blender/Linux/Ubuntu/CMake
+
+git clone https://git.blender.org/blender.git
+
+dwight (master) blender $ df
+Filesystem      1K-blocks       Used  Available Use% Mounted on
+udev              4033900          0    4033900   0% /dev
+tmpfs              817496       9948     807548   2% /run
+/dev/sda2       253060780   50618248  189564708  22% /
+tmpfs             4087468       7316    4080152   1% /dev/shm
+tmpfs                5120          4       5116   1% /run/lock
+tmpfs             4087468          0    4087468   0% /sys/fs/cgroup
+/dev/sdh1       488384000  481309844    7074156  99% /media/dwight/E: FreeAgent (.5 T)
+/dev/sda4      2664647676  253150244 2411497432  10% /media/dwight/DataStor
+/dev/sdc1      1953447932 1827903244  125544688  94% /media/dwight/L: MyPassPort (2T)
+/dev/sdb1      1953511420 1453138924  500372496  75% /media/dwight/O: Backup+ (2T)
+cgmfs                 100          0        100   0% /run/cgmanager/fs
+tmpfs              817496        100     817396   1% /run/user/1000
+
+
+./blender/build_files/build_environment/install_deps.sh
+:
+Or even simpler, just run (in your blender-source dir):
+
+  make -j6 BUILD_CMAKE_ARGS="-U *SNDFILE* -U *PYTHON* -U *BOOST* -U *Boost* -U *OPENCOLORIO* -U *OPENEXR* -U *OPENIMAGEIO* -U *LLVM* -U *CYCLES* -U *OPENSUBDIV* -U *OPENVDB* -U *COLLADA* -U *FFMPEG* -U *ALEMBIC* -D WITH_CODEC_SNDFILE=ON -D PYTHON_VERSION=3.5 -D WITH_OPENCOLORIO=ON -D OPENCOLORIO_ROOT_DIR=/opt/lib/ocio -D WITH_OPENIMAGEIO=ON -D OPENIMAGEIO_ROOT_DIR=/opt/lib/oiio -D WITH_CYCLES_OSL=ON -D WITH_LLVM=ON -D LLVM_VERSION=3.4 -D CYCLES_OSL=/opt/lib/osl -D LLVM_ROOT_DIR=/opt/lib/llvm -D LLVM_STATIC=ON -D WITH_OPENSUBDIV=ON -D OPENSUBDIV_ROOT_DIR=/opt/lib/osd -D WITH_OPENVDB=ON -D WITH_OPENVDB_BLOSC=ON -D WITH_ALEMBIC=ON -D ALEMBIC_ROOT_DIR=/opt/lib/alembic -D WITH_CODEC_FFMPEG=ON -D FFMPEG_LIBRARIES='avformat;avcodec;avutil;avdevice;swscale;swresample;lzma;rt;theoradec;theora;theoraenc;vorbisenc;vorbisfile;vorbis;ogg;x264;openjpeg;openjpeg_JPWL'"
+
+This information has been written to /home/dwight/blender-git/BUILD_NOTES.txt
+
+--ALEMBIC off and dir
+
+  make -j6 BUILD_CMAKE_ARGS="-U *SNDFILE* -U *PYTHON* -U *BOOST* -U *Boost* -U *OPENCOLORIO* -U *OPENEXR* -U *OPENIMAGEIO* -U *LLVM* -U *CYCLES* -U *OPENSUBDIV* -U *OPENVDB* -U *COLLADA* -U *FFMPEG* -U *ALEMBIC* -D WITH_CODEC_SNDFILE=ON -D PYTHON_VERSION=3.5 -D WITH_OPENCOLORIO=ON -D OPENCOLORIO_ROOT_DIR=/opt/lib/ocio -D WITH_OPENIMAGEIO=ON -D OPENIMAGEIO_ROOT_DIR=/opt/lib/oiio -D WITH_CYCLES_OSL=ON -D WITH_LLVM=ON -D LLVM_VERSION=3.4 -D CYCLES_OSL=/opt/lib/osl -D LLVM_ROOT_DIR=/opt/lib/llvm -D LLVM_STATIC=ON -D WITH_OPENSUBDIV=ON -D OPENSUBDIV_ROOT_DIR=/opt/lib/osd -D WITH_OPENVDB=ON -D WITH_OPENVDB_BLOSC=ON -D WITH_ALEMBIC=OFF -D WITH_CODEC_FFMPEG=ON -D FFMPEG_LIBRARIES='avformat;avcodec;avutil;avdevice;swscale;swresample;lzma;rt;theoradec;theora;theoraenc;vorbisenc;vorbisfile;vorbis;ogg;x264;openjpeg;openjpeg_JPWL'"
+
+
+-- next...
+
+sudo apt-get install gcc-4.9
+
+g++
+gcc
+cpp
+
+
+
+
+
+
+============================================================================================
+============================================================================================
+
+Sat. 25-Feb-2017
+============================================================================================
+
+make -j6 BUILD_CMAKE_ARGS="-U *SNDFILE* -U *PYTHON* -U *BOOST* -U *Boost* -U *OPENCOLORIO* -U *OPENEXR* -U *OPENIMAGEIO* -U *LLVM* -U *CYCLES* -U *OPENSUBDIV* -U *OPENVDB* -U *COLLADA* -U *FFMPEG* -U *ALEMBIC* -D WITH_CODEC_SNDFILE=ON -D PYTHON_VERSION=3.5 -D WITH_OPENCOLORIO=ON -D OPENCOLORIO_ROOT_DIR=/opt/lib/ocio -D WITH_OPENIMAGEIO=ON -D OPENIMAGEIO_ROOT_DIR=/opt/lib/oiio -D WITH_CYCLES_OSL=ON -D WITH_LLVM=ON -D LLVM_VERSION=3.4 -D CYCLES_OSL=/opt/lib/osl -D LLVM_ROOT_DIR=/opt/lib/llvm -D LLVM_STATIC=ON -D WITH_OPENSUBDIV=ON -D OPENSUBDIV_ROOT_DIR=/opt/lib/osd -D WITH_OPENVDB=ON -D WITH_OPENVDB_BLOSC=ON -D WITH_ALEMBIC=ON -D ALEMBIC_ROOT_DIR=/opt/lib/alembic -D WITH_CODEC_FFMPEG=ON -D FFMPEG_LIBRARIES='avformat;avcodec;avutil;avdevice;swscale;swresample;lzma;rt;theoradec;theora;theoraenc;vorbisenc;vorbisfile;vorbis;ogg;x264;openjpeg;openjpeg_JPWL'"
+
+-----------------------------
+-----------------------------
+I used install_deps.sh to sort out the dependencies, and it writes a file BUILD_NOTES.txt
+I was using the command at the bottom of that file...
+
+Code:
+
+make -j2 BUILD_CMAKE_ARGS="-U *SNDFILE* -U *PYTHON* -U *BOOST* -U *Boost* -U *OPENCOLORIO* -U *OPENEXR* -U *OPENIMAGEIO* -U *LLVM* -U *CYCLES* -U *OPENSUBDIV* -U *OPENVDB* -U *COLLADA* -U *FFMPEG* -U *ALEMBIC* -D WITH_CODEC_SNDFILE=ON -D PYTHON_VERSION=3.5 -D WITH_OPENCOLORIO=ON -D OPENCOLORIO_ROOT_DIR=/opt/lib/ocio -D WITH_OPENIMAGEIO=ON -D OPENIMAGEIO_ROOT_DIR=/opt/lib/oiio -D WITH_CYCLES_OSL=ON -D WITH_LLVM=ON -D LLVM_VERSION=3.4 -D CYCLES_OSL=/opt/lib/osl -D LLVM_ROOT_DIR=/opt/lib/llvm -D LLVM_STATIC=ON -D WITH_OPENSUBDIV=ON -D OPENSUBDIV_ROOT_DIR=/opt/lib/osd -D WITH_OPENVDB=ON -D WITH_OPENVDB_BLOSC=ON -D WITH_OPENCOLLADA=ON -D WITH_ALEMBIC=ON -D ALEMBIC_ROOT_DIR=/opt/lib/alembic -D WITH_CODEC_FFMPEG=ON -D FFMPEG_LIBRARIES='avformat;avcodec;avutil;avdevice;swscale;swresample;lzma;rt;theoradec;theora;theoraenc;vorbisenc;vorbisfile;vorbis;ogg;xvidcore;vpx;mp3lame;x264;openjpeg;openjpeg_JPWL'"
+
+In that command I made these changes...
+Code:
+
+-D WITH_ALEMBIC=ON   #Replaced with -D WITH_ALEMBIC=OFF
+-D ALEMBIC_ROOT_DIR=/opt/lib/alembic   #Removed, probably didn't need to.
+-U *ALEMBIC*   #Wasn't sure, so I just left it.
+
+Then in the ~/blender-git/blender directory I did
+Code:
+
+make clean
+rm -rf ../build_linux
+
+...and ran the make command again. Success! 
+-----------------------------
+-----------------------------
+
+make -j6 BUILD_CMAKE_ARGS="-U *SNDFILE* -U *PYTHON* -U *BOOST* -U *Boost* -U *OPENCOLORIO* -U *OPENEXR* -U *OPENIMAGEIO* -U *LLVM* -U *CYCLES* -U *OPENSUBDIV* -U *OPENVDB* -U *COLLADA* -U *FFMPEG* -U *ALEMBIC* -D WITH_CODEC_SNDFILE=ON -D PYTHON_VERSION=3.5 -D WITH_OPENCOLORIO=ON -D OPENCOLORIO_ROOT_DIR=/opt/lib/ocio -D WITH_OPENIMAGEIO=ON -D OPENIMAGEIO_ROOT_DIR=/opt/lib/oiio -D WITH_CYCLES_OSL=ON -D WITH_LLVM=ON -D LLVM_VERSION=3.4 -D CYCLES_OSL=/opt/lib/osl -D LLVM_ROOT_DIR=/opt/lib/llvm -D LLVM_STATIC=ON -D WITH_OPENSUBDIV=ON -D OPENSUBDIV_ROOT_DIR=/opt/lib/osd -D WITH_OPENVDB=ON -D WITH_OPENVDB_BLOSC=ON -D WITH_ALEMBIC=OFF -D ALEMBIC_ROOT_DIR=/opt/lib/alembic -D WITH_CODEC_FFMPEG=ON -D FFMPEG_LIBRARIES='avformat;avcodec;avutil;avdevice;swscale;swresample;lzma;rt;theoradec;theora;theoraenc;vorbisenc;vorbisfile;vorbis;ogg;x264;openjpeg;openjpeg_JPWL'"
+
+
+
+make -j6 BUILD_CMAKE_ARGS="-U *SNDFILE* -U *PYTHON* -U *BOOST* -U *Boost* -U *OPENCOLORIO* -U *OPENEXR* -U *OPENIMAGEIO* -U *LLVM* -U *CYCLES* -U *OPENSUBDIV* -U *OPENVDB* -U *COLLADA* -U *FFMPEG* -U *ALEMBIC* -D WITH_CODEC_SNDFILE=ON -D PYTHON_VERSION=3.5 -D WITH_OPENCOLORIO=ON -D OPENCOLORIO_ROOT_DIR=/opt/lib/ocio -D WITH_OPENIMAGEIO=ON -D OPENIMAGEIO_ROOT_DIR=/opt/lib/oiio -D WITH_CYCLES_OSL=ON -D WITH_LLVM=ON -D LLVM_VERSION=3.4 -D CYCLES_OSL=/opt/lib/osl -D LLVM_ROOT_DIR=/opt/lib/llvm -D LLVM_STATIC=ON -D WITH_OPENSUBDIV=ON -D OPENSUBDIV_ROOT_DIR=/opt/lib/osd -D WITH_OPENVDB=ON -D WITH_OPENVDB_BLOSC=ON -D WITH_ALEMBIC=OFF -D WITH_CODEC_FFMPEG=ON -D FFMPEG_LIBRARIES='avformat;avcodec;avutil;avdevice;swscale;swresample;lzma;rt;theoradec;theora;theoraenc;vorbisenc;vorbisfile;vorbis;ogg;x264;openjpeg;openjpeg_JPWL'"
+
+:
+:
+[ 38%] Generating ../../../../release/datafiles/blender_icons16.png, ../../../../release/datafiles/blender_icons16.png.c
+../../../../bin/datatoc_icon: error while loading shared libraries: libpng16.so.16: cannot open shared object file: No such file or directory
+source/blender/editors/datafiles/CMakeFiles/bf_editor_datafiles.dir/build.make:589: recipe for target 'release/datafiles/blender_icons16.png' failed
+make[3]: *** [release/datafiles/blender_icons16.png] Error 127
+

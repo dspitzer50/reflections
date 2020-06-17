@@ -1,32 +1,44 @@
 How did viewing a diff between two versions of a file help you see the bug that
 was introduced?
     It pointed out exactly where the bug was.
+    It points out exactly what has changed.
 
 How could having easy access to the entire history of a file make you a more
 efficient programmer in the long term?
     It allows you to be freer in your coding by always allowing you an easy
     way to backup to previous code.
+    Prevents having to re-invent code, that may have been deleted.  Causes for
+    bugs found later in development can be traced in earlier code.
 
 What do you think are the pros and cons of manually choosing when to create a
 commit, like you do in Git, vs having versions automatically saved, like Google
 docs does?
     Both are useful.  Automatic saves can prevent acciental loss on a crash, but
     choosing when to save gives you a know point of functionality.
+    Pros: Save points at specific times based on what was done.
+    Cons: Tendency to wait too long between saves.
 
 Why do you think some version control systems, like Git, allow saving multiple
 files in one commit, while others, like Google Docs, treat each file separately?
     Google Docs is concerned with a single wordprocessing doc or spreadsheet
     as a unit of work.  Git deals more with groups of files, as in a software 
     project, where multiple files may be changed on a given update to code.
+    Some tasks, like editing pictures, are stand-alone, editing one file.  
+    Something like a software project may have many files, with multiple changes 
+    as part of a single change.
 
 How can you use the commands git log and git diff to view the history of files?
     About to learn that now...
     'git log' to find the ids/keys of various changes, and then
     'git diff id1... id2...' to see the actual changes between two commits
+    Using these two commands can show the change history of the file/s being listed.
 
 How might using version control make you more confident to make changes that
 could break something?
     Yes, since it's safer and can always revert to a previous state.
+    It helps to know that you can return to a 'working' state.
 
 Now that you have your workspace set up, what do you want to try using Git for?
+    Continue and finish this course.
     Other class on maching learning.
+    (maybe later) Then, work through Android and Java classes.

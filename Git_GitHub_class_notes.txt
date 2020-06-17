@@ -1,0 +1,53 @@
+Git
+===
+	git help <command>
+	git diff  id1  id2  (diff between two repository versions)
+	git diff 			(diff between working dir and staging area)
+	git diff --staged	(diff between staging area and repository)
+	git reset --hard 	(__BE CAREFUL__)
+						(discards any changes in working dir or staging area)
+	git clone  https://github.com/udacity/asteroids.git
+	git config --global color.ui auto
+	git log
+	git diff f19c  b067
+	git checkout   b0678   (to checkout an earlier ver. -'detached HEAD' state)
+	git checkout -b  b0678  (new branch)
+	git init
+	git status
+	git add <file>  	(to staging area)
+	git commit            	(Will open editor for commit message)
+	git commit -m "msg"		(Uses <msg> for commit message)
+	git checkout master		(HEAD switched back to master from earlier checkout)
+	git branch 				(to display branches)
+	git branch <name>		(create a bew branch)
+	git checkout <branch-name>	(switch to a branch)
+	git log --graph --oneline master coins easy-mode  (to see graph of branches)
+
+	git checkout -b <branch-name>
+		equal to -->\
+					git branch <branch-name>		(create a bew branch)
+					git checkout <branch-name>		(switch to a branch)
+	
+	git show <commit_id>	(like diff, but defaults to parent)
+	git merge <branch1> <branch2>	(merge 1 & 2 together with current checked out)
+	git merge --abort				(after getting stuck in merge errors)
+	git branch -d coins		(delete a branch label)
+
+	git remote
+	git remote -v
+	git remote add origin https://github.com/dspitzer50/refelections.git
+	git push -u origin master		(to GitHub remote)
+	git pull origin master			(from GitHub remoter)
+	git remote -ver   				(check where local points to on GitHub??)
+
+	
+
+   1. In Terminal, enter the following:
+
+    git config --global credential.helper cache
+                             # Set git to use the credential memory cache
+
+   2. To change the default password cache timeout, enter the following:
+
+    git config --global credential.helper 'cache --timeout=3600'
+                             # Set the cache to timeout after 1 hour (setting is in seconds)
